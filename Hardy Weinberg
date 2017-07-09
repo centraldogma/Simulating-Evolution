@@ -94,7 +94,7 @@ function genetic_Drift()
      p=a1/draws
      data.push(p);
      }
-  }
+  
    
     for (var x=0; x < generations; x=x+1)
     {
