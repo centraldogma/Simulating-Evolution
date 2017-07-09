@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+//This is a simplified and approximate model simulating the evolution of a pair of alleles (diploid organism)
+//The user can choose to start with the null model (based on the Hardy Weinberg principle) and then add any combination of the four forces
+//1)Genetic Drift 2)Migration 3)Mutation 4)Natural Selection
+
+
+  <head>
+  </head>
+
+  <body>
+   <script>
+   
+    function round_number(value, decimals)
+		{
+		var shifter = Math.pow(10, decimals);
+		return Math.round(value*shifter)/shifter;
+		}
+ 
+  function Simulate_HW()
+  {
+  
+  var frequency= prompt("If you know genotype frequency type 1 and if you know allele frequency type 2")
+  
+  if (frequency==1)
+  
+  {
+ var  a1a1 = parseFloat(prompt("Input genotype frequency of allele combination a1a1"));
+ var  a2a2= parseFloat(prompt("Input genotype frequency of allele combination a2a2"));
+ var  a1a2= 1- (a1a1+a2a2)
+  
+  var a1=a1a1+(a1a2/2)
+  var a2=1-a1
+  
+   
+
+    
+   console.log('generation 0 genotype frequencies are:', 'a1a1=', round_number(a1a1,2), 'a2a2=', round_number(a2a2,2), 'a1a2=', round_number(a1a2,2));
+
+  function create_next_generation()
+
+           {
+          a1a1= a1*a1
+          a1a2= 2*a1*a2
+          a2a2= a2*a2
+            }
+  
+             for(i=0; i<10; i++)
+             {
+             create_next_generation();
+             console.log('generation' + (i+1) , 'genotype frequencies are:', 'a1a1=' , round_number(a1a1,2), 'a2a2=', round_number(a2a2,2), 'a1a2=', round_number(a1a2,2));
+             }
+             
+  
+  }
+  
+  else
+  {
+  a1= prompt("Input frequency of allele a1")
+  a2 = 1-a1
+  
+console.log('generation 0 genotype frequency is unknown but generation 1 to n genotype frequencies are:', 'a1a1=', round_number((a1*a1),2), 'a2a2=', round_number((a2*a2),2), 'a1a2=', round_number((a1*a2),2))
+}
+ 
+   }
+  
+ 
+ 
+  var model = prompt("Select Model Number: 1 for Hardy Weinberg Model, 2 for Genetic Drift")
+  
+  switch(model)
+  {
+  case "1":
+  console.log("Simulating Hardy Weinberg Model");
+  Simulate_HW();
+  break;
+  case "2":
+  console.log("Simulating Genetic Drift");
+  break;
+  }
+  
+ 
+  
+   </script>
+  </body>
+  
+  
+</html>
