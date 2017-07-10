@@ -293,7 +293,7 @@ function genetic_Drift()
    draw_line_chart(data,"generation", "allele frequency", ["population size", N, "Generations",generations])
 }
 
-
+}
  
  
  
