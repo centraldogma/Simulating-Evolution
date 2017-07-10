@@ -217,7 +217,7 @@ function genetic_Drift()
   
   
   
-  function next_generation()
+  function next_generation(simulation_data)
      {
       var draws=2*N
       var a1=0
@@ -234,24 +234,32 @@ function genetic_Drift()
 	 }
      	}
      p=a1/draws
-     data.push(p);
+     simulation_data.push(p);
      }
   
    
-    for (var x=0; x < generations; x=x+1)
-    {
-    next_generation();
-    console.log ("generation" +"\t" + x + "\t"+ p + "\t"+ (1-p))
+    function simulation(simulation_counter) {
+    p = a+(c/2);
+    for (var i = 0; i < generations; i = i + 1) {
+        next_generation(data[simulation_counter]);
+    	}
     }
+    for (var i = 0; i < simulations; i = i + 1) {
+    data.push([]);
+    simulation(i);
+	}
+
+     draw_line_chart(data,"generation", "allele frequency", ["population size", N, "Generations",generations])
  }
   else 
-  {
+ {
   var p= parseFloat(prompt("Input allele frequency a1"));
+  var a=p
 	var N= parseInt(prompt("Input population size"));
 	var generations= parseInt(prompt("Input number of generations"));
 	var data = []
 
-	function next_generation()
+	function next_generation(simulation_data)
 	{
 	var draws=2*N
 	var a1=0
@@ -267,19 +275,22 @@ function genetic_Drift()
 	  }
 	}
 	p=a1/draws
-	data.push(p);
+	simulation_data.push(p);
 	}
-   
+   	function simulation(simulation_counter) {
+    p = a;
+    for (var i = 0; i < generations; i = i + 1) {
+        next_generation(data[simulation_counter]);
+   	 }
+	}
 	
-	for (var i=0; i<generations; i=i+1)
-	{
-	 next_generation();
-	console.log("generation" + i, p, 1-p);
-	}
+	for (var i = 0; i < simulations; i = i + 1) {
+    data.push([]);
+    simulation(i);
+		}
 
- 
-    }
- draw_line_chart(data,"generation", "allele frequency", ["population size", N, "Generations",generations])
+	
+   draw_line_chart(data,"generation", "allele frequency", ["population size", N, "Generations",generations])
 }
 
 
