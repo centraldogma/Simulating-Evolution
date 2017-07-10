@@ -213,7 +213,7 @@ function genetic_Drift()
   var  N= parseInt(prompt("Input Population Size"));
   var  generations= parseInt(prompt("Input number of generations"));
  var  data=[]
-  
+ var simulations= parseInt(prompt("Input number of simulations"));
   
   
   
@@ -257,7 +257,8 @@ function genetic_Drift()
   var a=p
 	var N= parseInt(prompt("Input population size"));
 	var generations= parseInt(prompt("Input number of generations"));
-	var data = []
+	var data = [];
+	var simulations= parseInt(prompt("Input number of simulations"));
 
 	function next_generation(simulation_data)
 	{
